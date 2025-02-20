@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define ROWS 15
-#define COLS 15
+#define ROWS 45
+#define COLS 45
 #define INF 1000000
 
 // Forward declarations for timeout callback functions
