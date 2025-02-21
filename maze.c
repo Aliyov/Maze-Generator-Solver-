@@ -428,6 +428,32 @@ static void start_astar_solving(GtkWidget *widget, gpointer data) {
     g_timeout_add(50, astar_solving_step, NULL);
 }
 
+
+static void start_about_me(GtkWidget *widget, gpointer data) {
+    (void)widget;  // Mark 'widget' as unused
+    (void)data;    // Mark 'data' as unused
+
+    // Create a new window
+    GtkWidget *about_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(about_window), "About Me");
+    gtk_window_set_default_size(GTK_WINDOW(about_window), 300, 200);
+
+    // Create a label with the "About Me" text
+    GtkWidget *label = gtk_label_new("Hey there!\n"
+                                     "Hope you will enjoy with this project. Actually if you are here,\n"
+                                     "I bet you fucked up with your coding obsession. Get a life dude.\n"
+                                     "I spend my days generating mazes and solving them because I have no life.\n"
+                                     "Like you ^.^\n\n"
+                                     "Developed by [github/Aliyov].");
+
+    // Add the label to the window
+    gtk_container_add(GTK_CONTAINER(about_window), label);
+
+    // Show the window and its contents
+    gtk_widget_show_all(about_window);
+}
+
+
 int main(int argc, char *argv[]) {
     srand(time(NULL));
     gtk_init(&argc, &argv);
@@ -466,6 +492,11 @@ int main(int argc, char *argv[]) {
     GtkWidget *astar_button = gtk_button_new_with_label("Solve with A*");
     gtk_box_pack_start(GTK_BOX(button_box), astar_button, TRUE, TRUE, 0);
     g_signal_connect(astar_button, "clicked", G_CALLBACK(start_astar_solving), NULL);
+
+    
+    GtkWidget *about_button = gtk_button_new_with_label("About Me");
+    gtk_box_pack_start(GTK_BOX(button_box), about_button, TRUE, TRUE, 0);
+    g_signal_connect(about_button, "clicked", G_CALLBACK(start_about_me), NULL);
 
     gtk_widget_show_all(window);
     gtk_main();
